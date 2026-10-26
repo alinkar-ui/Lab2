@@ -37,16 +37,28 @@ def calc_min_max_temperature(user_input):
     max_temp = max(user_input)
     return [float(min_temp), float(max_temp)]
 
+def calc_median_temperature(user_input):
+    user_input.sort()
+    n = len(user_input)
+
+    if n % 2 == 1:
+        median = user_input[n // 2]
+    else:
+        median = (user_input[n // 2 - 1] + user_input[n // 2]) / 2
+    return float(median)
+
 def main():
     display_main_menu()
     num_list = get_user_input()
 
     average = calc_average_temperature(num_list)
     min_max = calc_min_max_temperature(num_list)
+    median = calc_median_temperature(num_list)
 
     print("Average temperature:", average)
     print("Minimum temperature:", min_max[0])
     print("Maximum temperature:", min_max[1])
+    print("Median temperature:", median)
 
 if __name__ == "__main__":
     main()
